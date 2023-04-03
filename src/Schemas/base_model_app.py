@@ -1,7 +1,19 @@
+
+from typing import Any
 from bson import ObjectId
+from pydantic import BaseModel
+
+from src.utils.pyObjectId import PyObjectId
 
 
-class PyObjectId(ObjectId): 
+class BaseModelApp(BaseModel):
+     class Config:
+        orm_mode = True
+        json_encoders = {ObjectId: str}
+   
+
+
+class PyObjectId(PyObjectId): 
     @classmethod
     def __get_validators__(cls):
         yield cls.validate
@@ -15,3 +27,5 @@ class PyObjectId(ObjectId):
     @classmethod
     def __modify_schema__(cls, field_schema):
         field_schema.update(type="string")
+    
+   

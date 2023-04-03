@@ -1,4 +1,4 @@
-from src.repositorios.produtoRepo import adicionar_produto, listar_produtos
+from src.repositorios.produto_repo import adicionar_produto, listar_produtos
 
 
 async def add_produto(produto_schema_in):
