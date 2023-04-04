@@ -4,7 +4,7 @@ from fastapi import APIRouter, Body
 from fastapi.encoders import jsonable_encoder
 
 from src.Schemas.produtos.schemas import ProdutoSchemaOut, ProdutoSchemaIn
-from src.services import produtos_services
+from src.services.produtos_services import ProdutoService
 
 router = APIRouter(
     prefix="/produtos",
@@ -15,11 +15,9 @@ router = APIRouter(
 
 @router.get("", response_model=List[ProdutoSchemaOut])
 async def listar_produtos():
-    return await produtos_services.listar_produtos()
+    return await ProdutoService().get_produtos()
 
 
-@router.post('', response_model=ProdutoSchemaOut)
+@router.post("", response_model=ProdutoSchemaOut)
 async def post_produto(produto: ProdutoSchemaIn = Body(...)):
-    produto = jsonable_encoder(produto)
-    return await produtos_services.adicionar_produto(produto)
-
+    return await ProdutoService().add_produto(jsonable_encoder(produto))

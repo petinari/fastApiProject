@@ -1,10 +1,15 @@
-from src.repositorios.produto_repo import adicionar_produto, listar_produtos
+from fastapi.encoders import jsonable_encoder
+
+from src.Schemas.produtos.schemas import ProdutoSchemaIn
+from src.repositorios.produto_repo import ProdutoRepositorio
 
 
-async def add_produto(produto_schema_in):
-    return await adicionar_produto(produto_schema_in)
+class ProdutoService:
+    def __init__(self):
+        pass
 
+    async def add_produto(self, produto: ProdutoSchemaIn):
+        return await ProdutoRepositorio().adicionar_produto(jsonable_encoder(produto))
 
-async def get_produtos(produto_schema_in):
-    return await listar_produtos(produto_schema_in)
-
+    async def get_produtos(self):
+        return await ProdutoRepositorio().listar_produtos()
