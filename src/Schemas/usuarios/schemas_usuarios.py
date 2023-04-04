@@ -18,3 +18,8 @@ class UsuarioSchemaOut(BaseModelApp):
 class UsuarioLogin(BaseModelApp):
     nome: str
     senha: str
+
+
+class Token(BaseModelApp):
+    access_token: str
+    token_type: str
