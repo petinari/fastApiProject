@@ -20,6 +20,10 @@ class UsuarioLogin(BaseModelApp):
     senha: str
 
 
+class Usuario(BaseModelApp):
+    nome: str
+
+
 class Token(BaseModelApp):
     access_token: str
     token_type: str

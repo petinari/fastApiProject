@@ -8,8 +8,8 @@ class ProdutoService:
     def __init__(self):
         pass
 
-    async def add_produto(self, produto: ProdutoSchemaIn):
-        return await ProdutoRepositorio().adicionar_produto(jsonable_encoder(produto))
+    async def add_produto_service(self, produto: ProdutoSchemaIn):
+        return await ProdutoRepositorio().adicionar_produto_repo(jsonable_encoder(produto))
 
-    async def get_produtos(self):
-        return await ProdutoRepositorio().listar_produtos()
+    async def get_produtos_service(self):
+        return await ProdutoRepositorio().listar_produtos_repo()

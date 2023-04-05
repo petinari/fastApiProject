@@ -3,7 +3,7 @@ from typing import Any
 from bson import ObjectId
 from pydantic import BaseModel
 
-from src.utils.pyObjectId import PyObjectId
+from src.utils.pyObjectId import *
 
 
 class BaseModelApp(BaseModel):
